@@ -5,9 +5,7 @@
 #include <string>
 #include <vector>
 #include <random>
-#include <map>
 #include "crypto.h"
-class Server;
 
 class Message {
     public:
@@ -49,36 +47,6 @@ class VoiceMessage : public Message
         std::vector<unsigned char> voice;
 
 };
-
-class User 
-{
-    public:
-        User(std::string username, std::string private_key, Server* server); 
-        std::string get_username();
-        // bool send_text_message(std::string text, std::string receiver);
-
-    private:
-        std::string username;
-        std::string private_key;
-        Server* const server;
-};
-
-class Server
-{
-    public:
-        Server();
-        std::vector<User> get_users();
-        std::map<std::string, std::string> get_public_keys();
-        std::vector<Message*> get_messages();
-        User create_user(std::string username);
-        bool create_message(Message* msg, std::string signature);
-
-    private:
-        std::vector<User> users;
-        std::map<std::string, std::string> public_keys;
-        std::vector<Message*> messages;
-};
-
 
 
 #endif //MESSAGE_H
