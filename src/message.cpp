@@ -40,6 +40,13 @@ std::ostream& operator<<(std::ostream &os, const Message &c){ //fix the const pr
     return os;
 }
 
+// std::string Message::get_content(){
+//     if (this->get_type() == "text")
+//     {
+//         return this->get_text();
+//     }
+//     else
+// }
 
 TextMessage::TextMessage(std::string _text, std::string _sender, std::string _receiver)
     : Message{"text", _sender, _receiver},

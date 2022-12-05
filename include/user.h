@@ -11,8 +11,8 @@ class User
     public:
         User(std::string username, std::string private_key, Server* server); 
         std::string get_username();
-        // bool send_text_message(std::string text, std::string receiver);
-
+        bool send_text_message(std::string text, std::string receiver);
+        bool send_voice_message(std::string receiver);
     private:
         std::string username;
         std::string private_key;

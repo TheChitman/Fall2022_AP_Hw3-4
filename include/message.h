@@ -17,6 +17,7 @@ class Message {
         std::string get_time() const;
         virtual void print(std::ostream &os) const;
         friend std::ostream& operator<<(std::ostream &os, const Message &c);
+        std::string get_content();
 
     private:
         std::string type;
