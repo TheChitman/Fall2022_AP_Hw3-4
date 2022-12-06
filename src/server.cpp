@@ -28,28 +28,21 @@ User Server::create_user(std::string username)
 }
 
 
-
 bool Server::create_message(Message* msg, std::string signature)
 {
-
+    
     bool authentic = crypto::verifySignature(
         public_keys[msg->get_sender()],
         msg->get_sender(),
         signature
-        );
-    if (authentic)
+    );
+    
+    if (authentic){
         this->messages.push_back(msg);
-    return authentic;
-
-
-
-    // if (authentic){
-    //     this->messages.push_back(msg);
-    //     std::cout << this->messages[0]->get_receiver() << std::endl;
-    //     return authentic;
-    // }
-    // else 
-    //     return false;
+        return authentic;
+    }
+    else
+        return false;
 }
 
 

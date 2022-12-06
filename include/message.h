@@ -17,7 +17,7 @@ class Message {
         std::string get_time() const;
         virtual void print(std::ostream &os) const;
         friend std::ostream& operator<<(std::ostream &os, const Message &c);
-        std::string get_content();
+        // virtual void get_content() = 0;
 
     private:
         std::string type;
@@ -32,7 +32,7 @@ class TextMessage : public Message
         TextMessage(std::string text, std::string sender, std::string receiver);
         virtual void print(std::ostream &os) const;
         std::string get_text();
-    
+        // void get_content(std::string a){ a = get_text(); }
     private:
         std::string text;
 };
@@ -43,6 +43,8 @@ class VoiceMessage : public Message
         VoiceMessage(std::string sender, std::string receiver);
         virtual void print(std::ostream &os) const;
         std::vector<unsigned char> get_voice();
+        // virtual void get_content(std::vector<unsigned char> a) override 
+        //    { a = get_voice(); }
 
     private:
         std::vector<unsigned char> voice;
